@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodiMate - Footer</title>
-    <link rel="stylesheet" href="/static/css/fix/footer.css">
+    <link rel="stylesheet" th:href="@{/css/fix/footer.css}">
 </head>
 <body>
-    <!-- 가벼운 푸터 Fragment -->
-<footer class="footer">
+<!-- Footer Fragment -->
+<footer class="footer" th:fragment="footer">
     <div class="footer-main-container">
         <div class="footer-main-content">
             <!-- 문의 사항 섹션 -->
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- 회사 정보 -->
         <div class="footer-company-info">
             <div class="footer-company-info-list">
@@ -47,6 +47,6 @@
     </div>
 </footer>
 
-    <script src="/static/js/fix/footer.js"></script>
+<script th:src="@{/js/fix/footer.js}"></script>
 </body>
 </html>

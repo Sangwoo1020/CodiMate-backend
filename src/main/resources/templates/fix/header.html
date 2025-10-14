@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodiMate - Header</title>
-    <link rel="stylesheet" href="/static/css/fix/header.css">
+    <link rel="stylesheet" th:href="@{/css/fix/header.css}">
 </head>
 <body>
-    <!-- 헤더 -->
-<header class="header">
-    <a href="/templates/mainpage/mainpage.html" class="logo">CodiMate</a>
+<!-- Header Fragment -->
+<header class="header" th:fragment="header">
+    <a th:href="@{/}" class="logo">CodiMate</a>
     <nav class="nav">
         <ul class="nav-menu">
-            <li><a href="/templates/mainpage/mainpage.html">홈</a></li>
-            <li><a href="/templates/codi-recommend/codi-recommend.html">코디 추천</a></li>
-            <li><a href="/templates/closet/closet.html">옷장 관리</a></li>
-            <li><a href="/templates/color-description/color-description.html">컬러 매칭 가이드</a></li>
-            <li><a href="/templates/codi-history/codi-history.html">코디 히스토리</a></li>
-            <li><a href="/templates/mypage/dashboard.html">마이페이지</a></li>
+            <li><a th:href="@{/}">홈</a></li>
+            <li><a th:href="@{/codi-recommend}">코디 추천</a></li>
+            <li><a th:href="@{/closet}">옷장 관리</a></li>
+            <li><a th:href="@{/color-description}">컬러 매칭 가이드</a></li>
+            <li><a th:href="@{/codi-history}">코디 히스토리</a></li>
+            <li><a th:href="@{/mypage}">마이페이지</a></li>
         </ul>
     </nav>
 </header>
 
-    <script src="/static/js/fix/header.js"></script>
+<script th:src="@{/js/fix/header.js}"></script>
 </body>
 </html>

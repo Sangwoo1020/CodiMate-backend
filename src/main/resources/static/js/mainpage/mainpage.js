@@ -10,8 +10,8 @@ const MAIN_PAGE_COORDS = [
         id: 1,
         title: '봄날 캐주얼 룩',
         description: '화이트 셔츠 + 데님 팬츠 + 스니커즈',
-        image: '/static/image/mainpage/sample1.png',
-        colors: ['#FFFFFF', '#4682B4', '#D2B48C'], // 흰색, 데님, 베이지
+        image: '/image/mainpage/sample1.png',
+        colors: ['#FFFFFF', '#4682B4', '#D2B48C'],
         matchScore: 96,
         tags: ['casual', 'spring', 'comfortable']
     },
@@ -19,8 +19,8 @@ const MAIN_PAGE_COORDS = [
         id: 2,
         title: '클래식 오피스 룩',
         description: '네이비 블레이저 + 화이트 셔츠 + 슬랙스',
-        image: '/static/image/mainpage/sample2.png',
-        colors: ['#1E3A8A', '#FFFFFF', '#36454F'], // 네이비, 흰색, 차콜
+        image: '/image/mainpage/sample2.png',
+        colors: ['#1E3A8A', '#FFFFFF', '#36454F'],
         matchScore: 92,
         tags: ['business', 'classic', 'elegant']
     },
@@ -28,8 +28,8 @@ const MAIN_PAGE_COORDS = [
         id: 3,
         title: '로맨틱 데이트 룩',
         description: '플라워 원피스 + 가디건 + 플랫슈즈',
-        image: '/static/image/mainpage/sample3.png',
-        colors: ['#FFC0CB', '#FFFFFF', '#D2B48C'], // 핑크, 흰색, 베이지
+        image: '/image/mainpage/sample3.png',
+        colors: ['#FFC0CB', '#FFFFFF', '#D2B48C'],
         matchScore: 98,
         tags: ['date', 'romantic', 'spring']
     },
@@ -37,8 +37,8 @@ const MAIN_PAGE_COORDS = [
         id: 4,
         title: '미니멀 스트리트 룩',
         description: '오버사이즈 후드 + 와이드 팬츠 + 운동화',
-        image: '/static/image/mainpage/sample4.png',
-        colors: ['#000000', '#A9A9A9', '#D3D3D3'], // 검정, 다크그레이, 라이트그레이
+        image: '/image/mainpage/sample4.png',
+        colors: ['#000000', '#A9A9A9', '#D3D3D3'],
         matchScore: 86,
         tags: ['casual', 'modern', 'comfortable']
     },
@@ -46,8 +46,8 @@ const MAIN_PAGE_COORDS = [
         id: 5,
         title: '엘레간트 포멀',
         description: '블랙 원피스 + 하이힐 + 클러치백',
-        image: '/static/image/mainpage/sample5.png',
-        colors: ['#000000', '#D3D3D3', '#8B4513'], // 검정, 그레이, 브라운
+        image: '/image/mainpage/sample5.png',
+        colors: ['#000000', '#D3D3D3', '#8B4513'],
         matchScore: 94,
         tags: ['formal', 'elegant', 'winter']
     },
@@ -55,8 +55,8 @@ const MAIN_PAGE_COORDS = [
         id: 6,
         title: '모던 비즈니스',
         description: '베이지 트렌치 + 블라우스 + 펌프스',
-        image: '/static/image/mainpage/sample6.png',
-        colors: ['#D2B48C', '#FFFFFF', '#8B4513'], // 베이지, 흰색, 브라운
+        image: '/image/mainpage/sample6.png',
+        colors: ['#D2B48C', '#FFFFFF', '#8B4513'],
         matchScore: 90,
         tags: ['business', 'modern', 'autumn']
     },
@@ -64,8 +64,8 @@ const MAIN_PAGE_COORDS = [
         id: 7,
         title: '편안한 주말 룩',
         description: '니트 탑 + 청바지 + 로퍼',
-        image: '/static/image/mainpage/sample7.png',
-        colors: ['#A9A9A9', '#4682B4', '#8B4513'], // 그레이, 데님, 브라운
+        image: '/image/mainpage/sample7.png',
+        colors: ['#A9A9A9', '#4682B4', '#8B4513'],
         matchScore: 84,
         tags: ['casual', 'comfortable', 'autumn']
     },
@@ -73,8 +73,8 @@ const MAIN_PAGE_COORDS = [
         id: 8,
         title: '캐주얼 데이트 룩',
         description: '스웨터 + 미니스커트 + 부츠',
-        image: '/static/image/mainpage/sample8.png',
-        colors: ['#800020', '#D2B48C', '#000000'], // 버건디, 베이지, 검정
+        image: '/image/mainpage/sample8.png',
+        colors: ['#800020', '#D2B48C', '#000000'],
         matchScore: 95,
         tags: ['date', 'casual', 'winter']
     }
@@ -106,32 +106,31 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeMainPage() {
     setupSlider();
     setupFilterTabs();
-    setupCoordItems(); 
+    setupCoordItems();
     startAutoSlide();
-    addSlideDebugInfo(); 
+    addSlideDebugInfo();
 }
 
 function itemClickHandler() {
     const itemElements = Array.from(document.querySelectorAll('.coord-grid .coord-item'));
-    const itemIndex = itemElements.indexOf(this) + 1; 
-    
-    showMainPageCoordDetail(itemIndex); 
+    const itemIndex = itemElements.indexOf(this) + 1;
+
+    showMainPageCoordDetail(itemIndex);
 }
 
 function setupCoordItems() {
     const coordItems = document.querySelectorAll('.coord-item');
     coordItems.forEach((item, index) => {
         item.style.animation = `fadeInUp 0.8s ease forwards ${index * 0.1}s`;
-        
-        // ⭐️ 클릭 이벤트 핸들러 연결 ⭐️
-        item.removeEventListener('click', itemClickHandler); 
+
+        item.removeEventListener('click', itemClickHandler);
         item.addEventListener('click', itemClickHandler);
     });
 }
 
 function showMainPageCoordDetail(coordId) {
     const coord = MAIN_PAGE_COORDS.find(c => c.id === coordId);
-    
+
     if (coord) {
         showCoordDetailModal(coord);
     } else {
@@ -140,7 +139,7 @@ function showMainPageCoordDetail(coordId) {
 }
 
 // ==========================================================
-// 2. 모달 표시 로직 (스크린샷 디자인 반영)
+// 2. 모달 표시 로직
 // ==========================================================
 
 function showCoordDetailModal(coord) {
@@ -148,12 +147,11 @@ function showCoordDetailModal(coord) {
     if (existingModal) {
         existingModal.remove();
     }
-    
-    // 데이터 가공 (태그, 별점)
-    const colorsHtml = coord.colors.map(color => 
+
+    const colorsHtml = coord.colors.map(color =>
         `<div class="modal-color-circle" style="background-color: ${color};"></div>`
     ).join('');
-    
+
     const tagsHtml = coord.tags.map(tag => {
         return `<span class="modal-tag">${TAG_NAMES_MAP[tag] || tag}</span>`;
     }).join('');
@@ -161,8 +159,7 @@ function showCoordDetailModal(coord) {
     const fullStars = Math.floor(coord.matchScore / 20);
     const emptyStars = 5 - fullStars;
     const starsHtml = '★'.repeat(fullStars) + '☆'.repeat(emptyStars);
-    
-    // ⭐️ 모달 HTML 마크업 (스크린샷과 크기/디자인 통일) ⭐️
+
     const modalHtml = `
         <div class="coord-detail-modal active" id="coordDetailModal">
             <div class="modal-content-screenshot"> 
@@ -231,22 +228,19 @@ function showCoordDetailModal(coord) {
             </div>
         </div>
     `;
-    
-    // 모달 추가 및 이벤트 처리
+
     document.body.insertAdjacentHTML('beforeend', modalHtml);
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleModalEsc);
 }
 
-
 // ==========================================================
-// 3. 슬라이더 및 필터 함수 (기존 로직)
+// 3. 슬라이더 및 필터 함수
 // ==========================================================
 
 function setupSlider() {
     updateSlideIndicators();
     setupTouchEvents();
-    console.log('Initial slide:', currentSlide);
 }
 
 function nextSlide() {
@@ -254,7 +248,6 @@ function nextSlide() {
     updateSlider();
     updateSlideIndicators();
     restartAutoSlide();
-    console.log('Next slide:', currentSlide);
 }
 
 function previousSlide() {
@@ -262,7 +255,6 @@ function previousSlide() {
     updateSlider();
     updateSlideIndicators();
     restartAutoSlide();
-    console.log('Previous slide:', currentSlide);
 }
 
 function goToSlide(slideIndex) {
@@ -271,23 +263,19 @@ function goToSlide(slideIndex) {
         updateSlider();
         updateSlideIndicators();
         restartAutoSlide();
-        console.log('Go to slide:', currentSlide);
     }
 }
 
 function updateSlider() {
     const slider = document.getElementById('bannerSlider');
     if (slider) {
-        const translateX = -currentSlide * 20; // 각 슬라이드는 20%씩
+        const translateX = -currentSlide * 20;
         slider.style.transform = `translateX(${translateX}%)`;
-        console.log(`Slider moved to: ${translateX}%`);
-        
+
         const slides = document.querySelectorAll('.banner-slide');
         slides.forEach((slide, index) => {
             slide.classList.toggle('active', index === currentSlide);
         });
-    } else {
-        console.error('Banner slider not found!');
     }
 }
 
@@ -302,19 +290,16 @@ function startAutoSlide() {
     if (slideInterval) {
         clearInterval(slideInterval);
     }
-    
+
     slideInterval = setInterval(() => {
         nextSlide();
-    }, 4000); 
-    
-    console.log('Auto slide started');
+    }, 4000);
 }
 
 function stopAutoSlide() {
     if (slideInterval) {
         clearInterval(slideInterval);
         slideInterval = null;
-        console.log('Auto slide stopped');
     }
 }
 
@@ -364,25 +349,12 @@ function addSlideDebugInfo() {
         console.log('Slider element:', document.getElementById('bannerSlider'));
         console.log('Auto slide interval:', slideInterval);
     };
-    
-    const slideColors = [
-        'Purple (AI 색상 매칭)',
-        'Pink (날씨 기반 추천)', 
-        'Blue (나만의 옷장)',
-        'Green (코디 히스토리)',
-        'Orange (상황별 추천)'
-    ];
-    
-    window.showCurrentSlideInfo = () => {
-        console.log(`현재 슬라이드: ${currentSlide + 1}/5 - ${slideColors[currentSlide]}`);
-    };
 }
 
 function setupFilterTabs() {
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            const category = this.textContent.toLowerCase();
             const categoryMap = {
                 '전체': 'all',
                 '캐주얼': 'casual',
@@ -414,7 +386,7 @@ function filterCoords(category) {
     const items = document.querySelectorAll('.coord-item');
     items.forEach((item, index) => {
         const shouldShow = category === 'all' || item.dataset.category === category;
-        
+
         if (shouldShow) {
             item.style.display = 'block';
             item.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
@@ -424,25 +396,25 @@ function filterCoords(category) {
     });
 }
 
-// 배너 버튼 기능들
+// ✅ 배너 버튼 기능들 (Spring Boot 경로로 수정!)
 function startColorMatching() {
-    window.location.href = '/templates/codi-recommend/codi-recommend.html?option=color#recommend-options';
+    window.location.href = '/codi-recommend?option=color';
 }
 
 function getWeatherRecommendation() {
-    window.location.href = '/templates/codi-recommend/codi-recommend.html?option=weather#recommend-options';
+    window.location.href = '/codi-recommend?option=weather';
 }
 
 function getSituationCoord() {
-    window.location.href = '/templates/codi-recommend/codi-recommend.html?option=situation#recommend-options';
+    window.location.href = '/codi-recommend?option=situation';
 }
 
 function manageCloset() {
-    window.location.href = '/templates/closet/closet.html';
+    window.location.href = '/closet';
 }
 
 function viewHistory() {
-    window.location.href = '/templates/codi-history/codi-history.html';
+    window.location.href = '/codi-history';
 }
 
 // 키보드/가시성 이벤트
@@ -460,14 +432,12 @@ document.addEventListener('keydown', function(e) {
                 e.preventDefault();
             }
             break;
-        case ' ': 
+        case ' ':
             if (e.target.tagName !== 'INPUT') {
                 if (slideInterval) {
                     stopAutoSlide();
-                    console.log('Auto slide paused');
                 } else {
                     startAutoSlide();
-                    console.log('Auto slide resumed');
                 }
                 e.preventDefault();
             }
@@ -492,32 +462,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('load', function() {
-    console.log('Page loaded, checking slider...');
     const slider = document.getElementById('bannerSlider');
     if (slider) {
-        console.log('Slider found, current transform:', slider.style.transform);
         updateSlider();
-        console.log('Slider initialized to slide 0');
-    } else {
-        console.error('Slider not found on page load!');
     }
 });
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-
 // ==========================================================
-// 4. 모달 유틸리티 및 이벤트 처리 함수 (재사용 로직)
+// 4. 모달 유틸리티 및 이벤트 처리 함수
 // ==========================================================
 
 function closeCoordDetailModal() {
@@ -547,7 +499,7 @@ document.addEventListener('click', function(e) {
 function toggleFavorite(id) {
     const btn = document.getElementById(`favoriteBtn-${id}`);
     const text = document.getElementById(`favoriteText-${id}`);
-    
+
     if (btn.classList.contains('added')) {
         btn.classList.remove('added');
         text.textContent = '♡ 즐겨찾기';
@@ -559,15 +511,11 @@ function toggleFavorite(id) {
     }
 }
 
-function shareCoord(id) {
-    showNotification('코디 링크가 클립보드에 복사되었습니다!');
-}
-
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'coord-notification';
     notification.textContent = message;
-    
+
     notification.style.cssText = `
         position: fixed;
         bottom: 30px;
@@ -582,9 +530,9 @@ function showNotification(message) {
         animation: slideUpNotif 0.3s ease-out;
         font-weight: 600;
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
         notification.style.animation = 'slideDownNotif 0.3s ease-out';
         setTimeout(() => notification.remove(), 300);
